@@ -14,12 +14,12 @@ import {
   renderRAM,
   renderStorage,
 } from "@/lib/chain-data";
-import { calculateTPSScore } from "@/lib/chains";
+// import { calculateTPSScore } from "@/lib/chains";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex flex-col row-start-2 items-center sm:items-start px-24 py-4">
+    <main className="flex flex-col row-start-2 items-center sm:items-start px-4 md:px-24 py-4">
       <h1 className="text-4xl font-bold mt-8">🏡 Home Verifiability Score</h1>
       <p className="text-lg text-gray-500">
         The Home Verifiability Score (HVS) is a metric that measures how easily
@@ -36,8 +36,8 @@ export default function Home() {
             <TableHead>CPU</TableHead>
             <TableHead>RAM</TableHead>
             <TableHead>Storage</TableHead>
-            <TableHead>TPS</TableHead>
-            <TableHead>TPS Score</TableHead>
+            {/* <TableHead>TPS</TableHead> */}
+            {/* <TableHead>TPS Score</TableHead> */}
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -65,15 +65,15 @@ export default function Home() {
                 {renderStorage(chain.hardwareRequirements.storage)}
               </TableCell>
 
-              <TableCell>{chain.maxTheoreticalTPS}</TableCell>
+              {/* <TableCell>{chain.maxTheoreticalTPS}</TableCell> */}
 
-              <TableCell>
+              {/* <TableCell>
                 <Progress
                   value={calculateTPSScore(chain)}
                   max={100}
                   className="w-24"
                 />
-              </TableCell>
+              </TableCell> */}
             </TableRow>
           ))}
         </TableBody>
