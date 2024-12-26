@@ -3,6 +3,7 @@ import { Progress } from "@/components/ui/progress";
 import {
   Table,
   TableBody,
+  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -77,6 +78,7 @@ export default function Home() {
             </TableRow>
           ))}
         </TableBody>
+        <TableCaption>Coming soon: TPS, Gas Fees, TVL, and more.</TableCaption>
       </Table>
 
       <h4 className="text-xl mt-8 font-bold">
