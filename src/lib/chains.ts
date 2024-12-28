@@ -2,7 +2,7 @@ export type Chain = {
   name: string;
   iconURL: string;
   hardwareRequirements: HardwareRequirements;
-  maxTheoreticalTPS: number;
+  maxTheoreticalTPS?: number;
 };
 
 type HardwareRequirements = {
@@ -14,30 +14,31 @@ type HardwareRequirements = {
 
 // Scoring weights
 const cpuWeights = [
-  { max: 2, score: 90 },
-  { max: 4, score: 70 },
-  { max: 8, score: 40 },
-  { max: 16, score: 20 },
-  { max: 32, score: 10 },
-  { max: Infinity, score: 5 },
-];
-
-const ramWeights = [
-  { max: 8, score: 95 },
-  { max: 16, score: 70 },
-  { max: 32, score: 40 },
-  { max: 64, score: 20 },
+  { max: 2, score: 100 },
+  { max: 4, score: 90 },
+  { max: 8, score: 70 },
+  { max: 16, score: 50 },
+  { max: 32, score: 30 },
   { max: Infinity, score: 10 },
 ];
 
+const ramWeights = [
+  { max: 4, score: 100 },
+  { max: 8, score: 85 },
+  { max: 16, score: 70 },
+  { max: 32, score: 50 },
+  { max: 64, score: 20 },
+  { max: Infinity, score: 0 },
+];
+
 const storageWeights = [
-  { max: 250, score: 95 },
-  { max: 500, score: 80 },
-  { max: 1000, score: 70 },
-  { max: 2000, score: 40 },
-  { max: 3000, score: 20 },
-  { max: 4000, score: 10 },
-  { max: Infinity, score: 5 },
+  { max: 500, score: 100 },   // Base tier for all chains under 500GB
+  { max: 750, score: 92 },    // New intermediate tier
+  { max: 1000, score: 85 },   // First major penalty tier
+  { max: 2000, score: 60 },   // Significant drop
+  { max: 3000, score: 35 },   // Heavy penalty
+  { max: 4000, score: 15 },   // Severe penalty
+  { max: Infinity, score: 0 }, // Anything above is considered impractical
 ];
 
 // Function to get weight score
@@ -66,8 +67,12 @@ export const calculateHVS = (chain: Chain): number => {
 export const calculateTPSScore = (chain: Chain): number => {
   const { maxTheoreticalTPS } = chain;
 
+  if (!maxTheoreticalTPS) {
+    throw new Error("Max theoretical TPS is not defined");
+  }
+
   // just a percentage of the range from 800 to 300000
   const tpsScore = Math.round((maxTheoreticalTPS / 300000) * 100);
 
   return tpsScore;
-}
+};

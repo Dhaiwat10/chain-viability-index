@@ -3,7 +3,7 @@ import { Progress } from "@/components/ui/progress";
 import {
   Table,
   TableBody,
-  TableCaption,
+  // TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -15,6 +15,7 @@ import {
   renderRAM,
   renderStorage,
 } from "@/lib/chain-data";
+import { ExternalLinkIcon } from "lucide-react";
 // import { calculateTPSScore } from "@/lib/chains";
 import Link from "next/link";
 
@@ -45,14 +46,21 @@ export default function Home() {
           {getChainDataWithHVS().map((chain) => (
             <TableRow key={chain.name}>
               <TableCell>
-                <div className="flex items-center gap-2">
-                  <img
-                    src={chain.iconURL}
-                    alt={chain.name}
-                    className="w-6 h-6 rounded-full"
-                  />
-                  <span>{chain.name}</span>
-                </div>
+                <a
+                  href={chain.hardwareRequirements.refLink}
+                  target="_blank"
+                  className="hover:underline"
+                >
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={chain.iconURL}
+                      alt={chain.name}
+                      className="w-6 h-6 rounded-full"
+                    />
+                    <span>{chain.name}</span>
+                    <ExternalLinkIcon className="w-3 h-3" />
+                  </div>
+                </a>
               </TableCell>
               <TableCell className="flex gap-2 items-center">
                 <span className="w-12">{chain.hvs}</span>
@@ -78,7 +86,7 @@ export default function Home() {
             </TableRow>
           ))}
         </TableBody>
-        <TableCaption>Coming soon: TPS, Gas Fees, TVL, and more.</TableCaption>
+        {/* <TableCaption>Coming soon: TPS, Gas Fees, TVL, and more.</TableCaption> */}
       </Table>
 
       <h4 className="text-xl mt-8 font-bold">
@@ -89,6 +97,19 @@ export default function Home() {
         of hardware requirements: RAM (40%), CPU (45%), and Storage (15%). Each
         component is scored based on accessibility for typical home setups based
         on hardware purchase cost and maintenance costs.
+      </p>
+
+      <p className="text-gray-500 mt-8">
+        Found something incorrect? The code is open source and available on{" "}
+        <a
+          href="https://github.com/dhaiwat10/chain-viability-index"
+          target="_blank"
+          className="underline"
+        >
+          <span className="flex items-center gap-1">
+            Github <ExternalLinkIcon className="w-3 h-3" />
+          </span>
+        </a>
       </p>
 
       <Link
