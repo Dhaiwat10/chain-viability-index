@@ -86,8 +86,8 @@ export const chainData: Chain[] = [
       "https://w7.pngwing.com/pngs/715/916/png-transparent-ethereum%EF%BC%8Ceth%EF%BC%8Cicon.png",
     hardwareRequirements: {
       cpuCores: 4,
-      RAM: 16,
-      storage: 1000,
+      RAM: 32,
+      storage: 4000,
       refLink:
         "https://www.quicknode.com/guides/infrastructure/node-setup/ethereum-full-node-vs-archive-node#what-is-an-ethereum-full-node",
     },
