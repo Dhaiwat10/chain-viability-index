@@ -145,6 +145,16 @@ export const chainData: Chain[] = [
       refLink: "https://github.com/matter-labs/zksync-era/blob/main/docs/src/guides/external-node/00_quick_start.md",
     },
   },
+  {
+    name: "Gnosis",
+    iconURL: "https://cryptologos.cc/logos/gnosis-gno-gno-logo.png?v=002",
+    hardwareRequirements: {
+      cpuCores: 4,
+      RAM: 16,
+      storage: 2000,
+      refLink: "https://docs.gnosischain.com/node#requirements",
+    },
+  },
 ];
 
 export const getChainDataWithHVS = () => {
