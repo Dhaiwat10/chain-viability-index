@@ -40,9 +40,9 @@ export const chainData: Chain[] = [
     name: "Sui",
     iconURL: "https://cryptologos.cc/logos/sui-sui-logo.png",
     hardwareRequirements: {
-      cpuCores: 8,
-      RAM: 128,
-      storage: 4000,
+      cpuCores: 10,
+      RAM: 32,
+      storage: 1000,
       refLink: "https://docs.sui.io/guides/build/fullnode",
     },
     maxTheoreticalTPS: 297000,
@@ -53,7 +53,7 @@ export const chainData: Chain[] = [
     hardwareRequirements: {
       cpuCores: 16,
       RAM: 32,
-      storage: 2000,
+      storage: 4000,
       refLink: "https://monad.xyz/docs/running-a-node",
     },
     maxTheoreticalTPS: 10000,
@@ -75,7 +75,7 @@ export const chainData: Chain[] = [
     hardwareRequirements: {
       cpuCores: 4,
       RAM: 8,
-      storage: 250,
+      storage: 500,
       refLink: "https://docs.starknet.io/docs/FullNode.html",
     },
     maxTheoreticalTPS: 857,
@@ -86,8 +86,8 @@ export const chainData: Chain[] = [
       "https://w7.pngwing.com/pngs/715/916/png-transparent-ethereum%EF%BC%8Ceth%EF%BC%8Cicon.png",
     hardwareRequirements: {
       cpuCores: 4,
-      RAM: 32,
-      storage: 4000,
+      RAM: 16,
+      storage: 2000,
       refLink:
         "https://www.quicknode.com/guides/infrastructure/node-setup/ethereum-full-node-vs-archive-node#what-is-an-ethereum-full-node",
     },
@@ -98,7 +98,7 @@ export const chainData: Chain[] = [
     hardwareRequirements: {
       cpuCores: 2,
       RAM: 2,
-      storage: 350,
+      storage: 600,
       refLink: "https://bitcoin.org/en/full-node",
     },
   },
@@ -119,7 +119,7 @@ export const chainData: Chain[] = [
     hardwareRequirements: {
       cpuCores: 8,
       RAM: 16,
-      storage: 2000,
+      storage: 1600,
       refLink:
         "https://docs.optimism.io/builders/node-operators/tutorials/mainnet",
     },
@@ -130,7 +130,7 @@ export const chainData: Chain[] = [
     hardwareRequirements: {
       cpuCores: 4,
       RAM: 16,
-      storage: 600,
+      storage: 2500,
       refLink: "https://docs.arbitrum.io/run-arbitrum-node/run-full-node",
     },
   },
@@ -140,8 +140,8 @@ export const chainData: Chain[] = [
       "https://icoholder.com/files/img/60f7217ff5d8bd7fdfdf6d5a2403589e.jpeg",
     hardwareRequirements: {
       cpuCores: 4,
-      RAM: 32,
-      storage: 500,
+      RAM: 16,
+      storage: 700,
       refLink: "https://github.com/matter-labs/zksync-era/blob/main/docs/src/guides/external-node/00_quick_start.md",
     },
   },
@@ -182,5 +182,11 @@ export const renderStorage = (storage: number) => {
     return `${storage} GB`;
   }
   const storageInTB = storage / 1000;
-  return `${storageInTB.toFixed(0)} TB`;
+
+  // if there is a decimal, round to 2 decimal places
+  if (storageInTB % 1 !== 0) {
+    return `${storageInTB.toFixed(2)} TB`;
+  }
+
+  return `${storageInTB} TB`;
 };
