@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import {
   getChainDataWithHVS,
+  renderBandwidth,
   renderCPUCores,
   renderRAM,
   renderStorage,
@@ -38,6 +39,7 @@ export default function Home() {
             <TableHead>CPU</TableHead>
             <TableHead>RAM</TableHead>
             <TableHead>Storage</TableHead>
+            <TableHead>Bandwidth</TableHead>
             {/* <TableHead>TPS</TableHead> */}
             {/* <TableHead>TPS Score</TableHead> */}
           </TableRow>
@@ -73,6 +75,9 @@ export default function Home() {
               <TableCell>
                 {renderStorage(chain.hardwareRequirements.storage)}
               </TableCell>
+              <TableCell>
+                {renderBandwidth(chain.hardwareRequirements.bandwidth)}
+              </TableCell>
 
               {/* <TableCell>{chain.maxTheoreticalTPS}</TableCell> */}
 
@@ -94,9 +99,10 @@ export default function Home() {
       </h4>
       <p className="text-gray-500">
         The Home Verifiability Score (HVS) is calculated as a weighted average
-        of hardware requirements: RAM (40%), CPU (45%), and Storage (15%). Each
-        component is scored based on accessibility for typical home setups based
-        on hardware purchase cost and maintenance costs.
+        of hardware requirements: RAM (30%), CPU (30%), Storage (15%), and
+        Bandwidth (25%). Each component is scored based on accessibility for
+        typical home setups based on hardware purchase cost and maintenance
+        costs.
       </p>
 
       <p className="text-gray-500 mt-8">
