@@ -83,7 +83,7 @@ export const chainData: Chain[] = [
       RAM: 8,
       storage: 500,
       bandwidth: 1.5,
-      refLink: "https://docs.starknet.io/docs/FullNode.html",
+      refLink: "https://docs.starknet.io/ecosystem/fullnodes-rpc-providers/#full_nodes",
     },
     maxTheoreticalTPS: 857,
   },
