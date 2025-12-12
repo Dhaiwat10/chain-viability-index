@@ -149,8 +149,8 @@ export const chainData: Chain[] = [
     iconURL: "/zksync.webp",
     hardwareRequirements: {
       cpuCores: 4,
-      RAM: 16,
-      storage: 700,
+      RAM: 32,
+      storage: 500,
       bandwidth: 2,
       refLink:
         "https://github.com/matter-labs/zksync-era/blob/main/docs/src/guides/external-node/00_quick_start.md",
